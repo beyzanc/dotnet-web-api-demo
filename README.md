@@ -2,12 +2,6 @@
 
 This repository contains a RESTful API for a task management system. The API allows users to perform various operations related to tasks, such as creating tasks, updating task details, retrieving tasks based on different criteria, and more. The API is built using ASP.NET Core and utilizes FluentValidation for input validation.
 
-## Project Structure
-
-- **Task.cs**: Defines the **Task model class** with properties such as Id, Title, Description, Deadline, IsCompleted, Priority and list of Tags.
-- **TasksController.cs**: Contains the **TasksController class**, which handles various **HTTP requests** related to tasks. It includes methods for retrieving tasks, creating a new task, updating task details, deleting a task, sorting and filtering tasks. The controller is responsible for processing the requests and generating appropriate responses.
-- **TasksValidator.cs**: Defines the **TasksValidator class**, which extends **AbstractValidator<Task>**. It contains validation rules for each property of the Task model using **FluentValidation's fluent API**. The TasksValidator class ensures that the input data for tasks meets the specified criteria and is valid before further processing.
-
 ## Usage
 
 1.  Clone the project from Github by running the following command in a terminal:
@@ -32,8 +26,40 @@ This repository contains a RESTful API for a task management system. The API all
 
 7. Enjoy!
 
+## Project Structure
 
-## Additional Notes
+- **Task.cs**: Defines the **Task model class** with properties such as Id, Title, Description, Deadline, IsCompleted, Priority and list of Tags.
+- **TasksController.cs**: Contains the **TasksController class**, which handles various **HTTP requests** related to tasks. It includes methods for retrieving tasks, creating a new task, updating task details, deleting a task, sorting and filtering tasks. The controller is responsible for processing the requests and generating appropriate responses.
+- **TasksValidator.cs**: Defines the **TasksValidator class**, which extends **AbstractValidator<Task>**. It contains validation rules for each property of the Task model using **FluentValidation's fluent API**. The TasksValidator class ensures that the input data for tasks meets the specified criteria and is valid before further processing.
+
+## Task Model
+A task object has the following properties:
+
+- **Id (integer)**: The unique identifier of the task.
+- **Title (string)**: The title or name of the task.
+- **Description (string)**: The detailed description of the task.
+- **Deadline (string, ISO 8601 )**: The deadline or due date of the task.
+- **IsCompleted (boolean)**: Indicates whether the task is completed or not.
+- **Priority (integer)**: The priority level of the task.
+- **Tags (array of strings)**: The tags associated with the task.
+
+## API Endpoints
+
+The API exposes the following endpoints:
+
+- **GET /api/tasks** - Retrieves all tasks.
+- **GET /api/tasks/{id}** - Retrieves a specific task by its ID.
+- **GET /api/tasks/isCompleted/{isCompleted}** - Retrieves tasks based on their completion status.
+- **GET /api/tasks/priority/{priority}** - Retrieves tasks based on their priority level from 1 to 5.
+- **GET /api/tasks/sort?sortBy={sortBy}&sortOrder={sortOrder}** - Retrieves tasks sorted by deadline and priority and sort order with options ascending or descending.
+- **GET /api/tasks/filter?isCompleted={isCompleted}&priority={priority}&deadline={deadline}&tags={tags}** - Retrieves tasks based on completion, priority, deadline and tags.
+- **POST /api/tasks** - Creates a new task.
+- **DELETE /api/tasks/{id}** - Deletes a specific task by its ID.
+- **PUT /api/tasks/{id}** - Updates a specific task by its ID.
+- **PATCH /api/tasks/{id}/Title** - Updates the title of a specific task.
+
+## Data Validation
+The API uses FluentValidation library for validating task data. When creating or updating a task, the API ensures that the task properties meet the specified validation rules. If any validation errors occur, a 400 Bad Request response is returned with the details of the validation errors.
 
 ## Fluent Validation Rules with Same Examples
 
