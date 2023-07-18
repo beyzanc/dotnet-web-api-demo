@@ -49,9 +49,12 @@ This repository contains a RESTful API for a task management system. The API all
 
 
 
-### **An example of the success status request and response scenario with a 200(OK) code:**
+### **A successful example of task filtering with HTTP GET:**
+![](https://github.com/beyzanc/dotnet-web-api-demo/blob/main/200.png)
 
-### **An example of the failed status request and response scenario with a 400(Bad Request) code:**
+### **An unsuccessful example of a POST operation with invalid inputs in Fluent Validation:**
+![](https://github.com/beyzanc/dotnet-web-api-demo/blob/main/400.png)
+
 
 ## Object Oriented Programming in Task Management System
 
